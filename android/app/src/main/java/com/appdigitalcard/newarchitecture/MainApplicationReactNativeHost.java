@@ -1,4 +1,4 @@
-package com.appdigitalcard.newarchitecture;
+package com.appdigitalcart.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.EmptyReactNativeConfig;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.appdigitalcard.BuildConfig;
-import com.appdigitalcard.newarchitecture.components.MainComponentsRegistry;
-import com.appdigitalcard.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.appdigitalcart.BuildConfig;
+import com.appdigitalcart.newarchitecture.components.MainComponentsRegistry;
+import com.appdigitalcart.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 
