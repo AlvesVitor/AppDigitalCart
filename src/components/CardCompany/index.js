@@ -15,7 +15,7 @@ export function CardCompany({ data }) {
 
   return (
     <TouchableOpacity style={styles.container} onPress={handleOnPress}>
-      <Image style={styles.logo} source={LOGO} resizeMode="contain" />
+      <Image style={styles.logo} source={LOGO} />
       <Text style={styles.title}>{name}</Text>
     </TouchableOpacity>
   );

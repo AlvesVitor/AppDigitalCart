@@ -1,12 +1,14 @@
 import React, { useEffect, useContext } from "react";
 import { View, Text, FlatList } from "react-native";
 
+import Icon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import { CardProduct } from "../../components/CardProduct";
 import { useNavigation } from "@react-navigation/native";
 import { FabButton } from "../../components/FabButton";
 import { Context } from "../../context";
 import service from "../../service";
 import { styles } from "./styles";
+import { numberToReal } from "../../utils";
 
 export function Cart({ route }) {
   const { id } = route.params;
@@ -48,15 +50,18 @@ export function Cart({ route }) {
 
   return (
     <View style={styles.container}>
-      
       <FlatList
         style={{ width: "100%" }}
         showsVerticalSrollIndicator={false}
-        data={cart.items}
+        data={products}
         keyExtractor={(item) => item.ean}
         renderItem={({ item }) => <CardProduct data={item} />}
       />
-      <FabButton style={{ bottom: 80, right: 50 }} onPress={handleOnPress} />
+      <View style={styles.sessionTotal}>
+        <Icon name="cart" icon="#000" size={20} />
+        <Text style={styles.total}>{"Total: " + numberToReal(cart.total)}</Text>
+      </View>
+      <FabButton style={{ bottom: 75, right: 50 }} onPress={handleOnPress} />
     </View>
   );
 }

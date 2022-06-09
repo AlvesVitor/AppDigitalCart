@@ -51,6 +51,6 @@ export function CardProduct({ data }) {
         <Text style={styles.totalText}>{numberToReal(price * amount)}</Text>
       </View>
 
-    </View>
+    </View >
   );
 }

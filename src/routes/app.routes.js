@@ -20,19 +20,19 @@ export function AppRoutes() {
                 <Stack.Screen name="Company" component={Company}
                     options={{
                         headerShown: true,
-                        headerTitle: "Company",
+                        headerTitle: "Lojas",
                     }}
                 />
                 <Stack.Screen name="Cart" component={Cart}
                     options={{
                         headerShown: true,
-                        headerTitle: "Cart",
+                        headerTitle: "Carrinho",
                     }}
                 />
                  <Stack.Screen name="Scanner" component={Scanner}
                     options={{
                         headerShown: true,
-                        headerTitle: "Scanner",
+                        headerTitle: "Leitor",
                     }}
                 />
             </Stack.Navigator>

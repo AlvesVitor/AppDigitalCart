@@ -39,6 +39,12 @@ export const styles = StyleSheet.create({
     list: {
         width: '100%',
         paddingHorizontal: 10
+    },
+    containerModal: {
+        width: "100%",
+        height: "100%",
+        alignItems: "center",
+        backgroundColor: "rgba(0,0,0,.2)"
     }
 
 });

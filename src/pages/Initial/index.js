@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
+import { View, Text, TextInput, Image, Alert, TouchableWithoutFeedback, Keyboard } from "react-native";
+
+import LOGO from "../../assets/img/logo.png";
 
 import { styles } from "./styles";
 
 export function Initial() {
   const [cep, setCep] = useState("");
   const navigation = useNavigation();
+
+  useEffect(() => {
+    if (cep.length === 8) {
+      handleOnPress();
+    }
+  }, [cep])
 
   function handleOnPress() {
     if (!cep.trim()) {
@@ -16,17 +24,23 @@ export function Initial() {
   }
 
   return (
-    <View style={styles.container}>
-      <Text>Insira o seu CEP</Text>
-      <View style={{ width: 200, borderBottomWidth: 0.3, marginVertical: 30 }}>
-        <TextInput
-          keyboardType="numeric"
-          value={cep.replace(/[^0-9]/g, '')}
-          onChangeText={(e) => setCep(e)}
-          maxLength={8}
-        />
-      </View>
-      <TouchableOpacity
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <View style={styles.container}>
+        <View style={styles.sessionImg}>
+          <Image style={styles.logo} source={LOGO} />
+          <Text>Insira o seu CEP</Text>
+        </View>
+
+        <View style={styles.sessionInput}>
+          <TextInput
+            style={styles.input}
+            keyboardType="numeric"
+            value={cep.replace(/[^0-9]/g, '')}
+            onChangeText={(e) => setCep(e)}
+            maxLength={8}
+          />
+        </View>
+        {/* <TouchableOpacity
         style={{
           width: 200,
           height: 60,
@@ -38,7 +52,8 @@ export function Initial() {
         onPress={handleOnPress}
       >
         <Text style={{ color: "#fff" }}>Confirmar</Text>
-      </TouchableOpacity>
-    </View>
+      </TouchableOpacity> */}
+      </View>
+    </TouchableWithoutFeedback>
   );
 }

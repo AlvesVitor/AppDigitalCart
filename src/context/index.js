@@ -5,20 +5,21 @@ import Sound from 'react-native-sound';
 
 export const Context = createContext({});
 
+const audio = new Sound(
+    MP3,
+    error => {
+        if (error) {
+            console.log('failed to load the sound', error);
+            return;
+        }
+    },
+);
 export default function ContextProvider({ children }) {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState({
         items: [],
+        total: 0
     });
-    const audio = new Sound(
-        MP3,
-        error => {
-            if (error) {
-                console.log('failed to load the sound', error);
-                return;
-            }
-        },
-    );
     useEffect(() => {
         audio.setVolume(1);
         audio.release();
@@ -32,6 +33,7 @@ export default function ContextProvider({ children }) {
             } : item)
             setCart(prevState => ({
                 ...prevState,
+                total: prevState.total + exists.price,
                 items: newItems
             }))
         } else {
@@ -39,44 +41,35 @@ export default function ContextProvider({ children }) {
             if (newItem) {
                 setCart(prevState => ({
                     ...prevState,
-                    items: [...prevState.items, newItem]
+                    items: [...prevState.items, newItem],
+                    total: prevState.total + newItem.price
                 }))
-
             } else {
                 Alert.alert("Atenção!", "Produto não encontrado.")
             }
         }
-        console.log(cart);
         if (sound) {
             audio.play()
         }
     }
 
     function removeItemCart(data, all) {
-
-        if(all) {
-            setCart(prevState => ({
-                ...prevState,
-                items: cart.items.filter(e => e.ean !== data)
-            }))
-            return;
-        }
-
         let exists = cart.items.filter(e => e.ean === data)
 
-        if (exists[0].amount > 1) {
+        if (exists[0].amount > 1 && !all) {
             let newItems = cart.items.map(item => item.ean === data ? {
                 ...item, amount: item.amount - 1
             } : item)
             setCart(prevState => ({
                 ...prevState,
-                items: newItems
+                items: newItems,
+                total: prevState.total - exists[0].price
             }))
-
         } else {
             setCart(prevState => ({
                 ...prevState,
-                items: cart.items.filter(e => e.ean !== data)
+                items: cart.items.filter(e => e.ean !== data),
+                total: prevState.total - (exists[0].amount * exists[0].price)
             }))
         }
     }
