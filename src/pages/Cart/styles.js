@@ -1,5 +1,9 @@
 import { StyleSheet } from "react-native";
 
+import { theme } from "../../global/styles/theme";
+
+const { grey } = theme.colors;
+
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -14,9 +18,22 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-start"
   },
-  total:{
+  total: {
     fontSize: 16,
     color: "green",
     marginLeft: 5
-  }
+  },
+  sessionImg: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  image: {
+    height: 200
+  },
+  title: {
+    fontSize: 14,
+    color: grey,
+    marginTop: 2
+  },
 });

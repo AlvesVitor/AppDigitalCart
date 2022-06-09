@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { IconComponent as Icon} from "../Icon";
 import { styles } from './styles';
 
 export function FabButton({ style, onPress }) {

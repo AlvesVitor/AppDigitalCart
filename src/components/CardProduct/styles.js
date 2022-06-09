@@ -1,5 +1,9 @@
 import { StyleSheet } from "react-native";
 
+import { theme } from ".././../global/styles/theme";
+
+const { grey } = theme.colors;
+
 export const styles = StyleSheet.create({
   container: {
     width: "100%",
@@ -7,12 +11,10 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: 'center',
-    borderBottomWidth: 2,
-    borderBottomColor: '#e5e5e5',
-    // backgroundColor: "#e5e5e5",
+    borderBottomWidth: 5,
+    borderBottomColor: '#f5f5f5',
     paddingHorizontal: 10,
     marginVertical: 7,
-    borderRadius: 10,
   },
   sessionImg: {
     flexDirection: "column",
@@ -30,18 +32,18 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   title: {
-    fontSize: 12
+    fontSize: 12,
+    color: grey
   },
   amountText: {
     fontSize: 12,
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
+    color: grey
   },
-  subTitle: {
-    fontSize: 12
-  },
-  totalText:{
+  totalText: {
     fontSize: 12,
     paddingVertical: 7,
+    color: grey
   },
   sessionAmount: {
     paddingVertical: 7,

@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
     sessionItem: {
         flex: 1,
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
     },
     Image: {
         width: 80,

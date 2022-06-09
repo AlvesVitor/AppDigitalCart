@@ -1,5 +1,9 @@
 import { StyleSheet } from 'react-native';
 
+import { theme } from "../../global/styles/theme";
+
+const { gray } = theme.colors;
+
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -34,7 +38,8 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     label: {
-        textAlign: 'center'
+        textAlign: 'center',
+        color: gray
     },
     list: {
         width: '100%',

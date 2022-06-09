@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { View, Text, TextInput, Image, Alert, TouchableWithoutFeedback, Keyboard } from "react-native";
+import { View, Text, TextInput, Image, Alert, TouchableWithoutFeedback, Keyboard, TouchableOpacity, } from "react-native";
 
 import LOGO from "../../assets/img/logo.png";
 
@@ -10,14 +10,9 @@ export function Initial() {
   const [cep, setCep] = useState("");
   const navigation = useNavigation();
 
-  useEffect(() => {
-    if (cep.length === 8) {
-      handleOnPress();
-    }
-  }, [cep])
 
   function handleOnPress() {
-    if (!cep.trim()) {
+    if (cep.length < 8) {
       return Alert.alert("Atenção", "Insira um CEP valido!");
     }
     navigation.navigate("Company", { cep: cep });
@@ -27,8 +22,8 @@ export function Initial() {
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.container}>
         <View style={styles.sessionImg}>
-          <Image style={styles.logo} source={LOGO} />
-          <Text>Insira o seu CEP</Text>
+          <Image style={styles.logo} source={LOGO} resizeMode="contain" />
+          <Text style={styles.title}>Insira o seu CEP</Text>
         </View>
 
         <View style={styles.sessionInput}>
@@ -40,19 +35,9 @@ export function Initial() {
             maxLength={8}
           />
         </View>
-        {/* <TouchableOpacity
-        style={{
-          width: 200,
-          height: 60,
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: "#1e5bc6",
-          borderRadius: 20,
-        }}
-        onPress={handleOnPress}
-      >
-        <Text style={{ color: "#fff" }}>Confirmar</Text>
-      </TouchableOpacity> */}
+        <TouchableOpacity style={styles.button} onPress={handleOnPress}>
+          <Text style={styles.buttonText}>Avançar</Text>
+        </TouchableOpacity>
       </View>
     </TouchableWithoutFeedback>
   );

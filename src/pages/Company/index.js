@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { CardCompany } from "../../components/CardCompany";
-import { View, FlatList } from "react-native";
+import { View, FlatList, Text } from "react-native";
 import service from "../../service";
 
 import { styles } from "./styles";
@@ -30,12 +30,13 @@ export function Company({ route }) {
 
   return (
     <View style={styles.container}>
+      <Text>Selecione uma unidade</Text>
       <FlatList
         style={{ width: "100%" }}
         showsVerticalSrollIndicator={false}
         data={companies}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <CardCompany data={item} />}
+        renderItem={({ item, index }) => <CardCompany data={item} color={index % 2}/>}
       />
     </View>
   );

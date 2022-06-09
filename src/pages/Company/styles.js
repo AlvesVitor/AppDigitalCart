@@ -1,5 +1,9 @@
 import { StyleSheet } from "react-native";
 
+import { theme } from "../../global/styles/theme";
+
+const { grey } = theme.colors;
+
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -7,4 +11,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     padding: 10
   },
+  title: {
+    color: grey
+  }
 });

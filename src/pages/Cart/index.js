@@ -1,14 +1,16 @@
 import React, { useEffect, useContext } from "react";
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, Image } from "react-native";
 
-import Icon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import { CardProduct } from "../../components/CardProduct";
 import { useNavigation } from "@react-navigation/native";
 import { FabButton } from "../../components/FabButton";
+import { IconComponent as Icon } from "../../components/Icon";
+import CART_IMG from "../../assets/img/cart.png";
+import { numberToReal } from "../../utils";
 import { Context } from "../../context";
 import service from "../../service";
 import { styles } from "./styles";
-import { numberToReal } from "../../utils";
+
 
 export function Cart({ route }) {
   const { id } = route.params;
@@ -50,15 +52,21 @@ export function Cart({ route }) {
 
   return (
     <View style={styles.container}>
+      {cart.items.length < 1 &&
+        <View style={styles.sessionImg}>
+          <Image style={styles.image} source={CART_IMG} resizeMode="contain" />
+          <Text style={styles.title}>Nenhum item inserido no até o momento.</Text>
+        </View>
+      }
       <FlatList
         style={{ width: "100%" }}
         showsVerticalSrollIndicator={false}
-        data={products}
+        data={cart.items}
         keyExtractor={(item) => item.ean}
         renderItem={({ item }) => <CardProduct data={item} />}
       />
       <View style={styles.sessionTotal}>
-        <Icon name="cart" icon="#000" size={20} />
+        <Icon name="cart" color="#000" size={20} />
         <Text style={styles.total}>{"Total: " + numberToReal(cart.total)}</Text>
       </View>
       <FabButton style={{ bottom: 75, right: 50 }} onPress={handleOnPress} />

@@ -1,5 +1,9 @@
 import { StyleSheet } from "react-native";
 
+import { theme } from "../../global/styles/theme";
+
+const { grey, blue } = theme.colors;
+
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -8,24 +12,45 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
   },
   sessionImg: {
-    width: '100%',
-    height: 60,
+    width: 200,
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  logo: {
+    width: 80,
+    height: 80,
+  },
+  sessionInput: {
+    width: 180,
+    borderWidth: 0.3,
+    borderRadius: 7,
+    marginVertical: 30,
+    alignItems: 'center',
+    borderColor: grey
+  },
+  input: {
+    width: "100%",
+    fontSize: 15,
+    color: grey,
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center"
+  },
+  title: {
+    fontSize: 16,
+    color: grey,
+  },
+  button: {
+    width: 150,
+    backgroundColor: blue,
+    paddingVertical: 12,
+    borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
   },
-  logo: {
-    width: 100,
-    height: 60,
-    marginBottom: 8
-  },
-  sessionInput: {
-    width: 100,
-    borderBottomWidth: 0.3,
-    marginVertical: 30,
-    alignItems: 'center'
-  },
-  input:{
-    fontSize: 15
+  buttonText:{
+    color: "#fff",
+    fontSize: 12
   }
 
 });

@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import Icon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
-import { View, Text, Image, TouchableOpacity, TextInput } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import { numberToReal } from "../../utils";
 import { Context } from "../../context";
+import { IconComponent as Icon } from "../../components/Icon";
 
 import { styles } from "./styles";
 
@@ -15,7 +15,7 @@ export function CardProduct({ data }) {
 
       <View style={styles.sessionImg}>
         <Image style={styles.logo} source={{ uri: image }} resizeMode="contain" />
-        <Text style={styles.subTitle}>{numberToReal(price)}</Text>
+        <Text style={styles.title}>{numberToReal(price)}</Text>
       </View>
 
       <View style={styles.AreaDescription}>

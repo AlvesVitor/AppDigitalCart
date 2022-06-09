@@ -1,22 +1,26 @@
 import { StyleSheet } from "react-native";
 
+import { theme } from ".././../global/styles/theme";
+
+const { grey } = theme.colors;
+
 export const styles = StyleSheet.create({
     container: {
         width: '100%',
-        height: 80,
         flexDirection: 'row',
+        height: 100,
         alignItems: "center",
-        backgroundColor: "#e5e5e5",
-        paddingLeft: 10,
-        marginVertical: 10,
-        borderRadius: 10
+        borderBottomWidth: 5,
+        borderBottomColor: "#f5f5f5",
+        paddingHorizontal: 10
     },
     logo: {
         width: 60,
         height: 60
     },
     title: {
-        fontSize: 16,
-        marginLeft: 10
+        fontSize: 18,
+        marginLeft: 10,
+        color: grey
     }
 });

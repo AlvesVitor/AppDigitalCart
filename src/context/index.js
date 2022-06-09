@@ -1,31 +1,16 @@
-import React, { useEffect, createContext, useState } from "react";
+import React, { createContext, useState } from "react";
 import { Alert } from "react-native";
-import MP3 from "../assets/midia/audio.mp3";
-import Sound from 'react-native-sound';
 
 export const Context = createContext({});
 
-const audio = new Sound(
-    MP3,
-    error => {
-        if (error) {
-            console.log('failed to load the sound', error);
-            return;
-        }
-    },
-);
 export default function ContextProvider({ children }) {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState({
         items: [],
         total: 0
     });
-    useEffect(() => {
-        audio.setVolume(1);
-        audio.release();
-    }, []);
 
-    function addItemCart(data, sound) {
+    function addItemCart(data) {
         let exists = cart.items.find(e => e.ean === data)
         if (exists) {
             let newItems = cart.items.map(item => item.ean === data ? {
@@ -47,9 +32,6 @@ export default function ContextProvider({ children }) {
             } else {
                 Alert.alert("Atenção!", "Produto não encontrado.")
             }
-        }
-        if (sound) {
-            audio.play()
         }
     }
 
