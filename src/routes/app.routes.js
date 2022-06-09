@@ -2,6 +2,7 @@ import React from "react";
 import { Initial } from "../pages/Initial";
 import { Company } from "../pages/Company";
 import { Cart } from "../pages/Cart";
+import { Scanner } from "../pages/Scanner";
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -22,10 +23,16 @@ export function AppRoutes() {
                         headerTitle: "Company",
                     }}
                 />
-                 <Stack.Screen name="Cart" component={Cart}
+                <Stack.Screen name="Cart" component={Cart}
                     options={{
                         headerShown: true,
                         headerTitle: "Cart",
+                    }}
+                />
+                 <Stack.Screen name="Scanner" component={Scanner}
+                    options={{
+                        headerShown: true,
+                        headerTitle: "Scanner",
                     }}
                 />
             </Stack.Navigator>

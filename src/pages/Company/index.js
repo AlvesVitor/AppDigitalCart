@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { CardCompany } from "../../components/CardCompany";
-import { View, Text, FlatList, Alert } from "react-native";
+import { View, FlatList } from "react-native";
 import service from "../../service";
 
 import { styles } from "./styles";
@@ -19,7 +19,7 @@ export function Company({ route }) {
         )
         .then((data) => {
           let list = [];
-          data.map((item, index) => {
+          data.map((item) => {
             list.push(...item.sellers)
           })
           setCompanies(list)
