@@ -15,11 +15,11 @@ https://mercado.carrefour.com.br/api/catalog_system/pub/products/search?fq={id}
 
 <p align="center">
   <img alt="Interface da aplicação" src="./github/gif1.gif" width="100%" height="auto">
-  <img alt="Interface da aplicação" src="./github/img1.jpeg" width="100%" height="auto">
-  <img alt="Interface da aplicação" src="./github/img2.jpeg" width="100%" height="auto">
-   <img alt="Interface da aplicação" src="./github/img3.jpeg" width="100%" height="auto">
-    <img alt="Interface da aplicação" src="./github/img4.jpeg" width="100%" height="auto">
-     <img alt="Interface da aplicação" src="./github/img5.jpeg" width="100%" height="auto">
+  <img alt="Interface da aplicação" src="./github/img1.jpeg" width="40%" height="auto">
+  <img alt="Interface da aplicação" src="./github/img2.jpeg" width="40%" height="auto">
+   <img alt="Interface da aplicação" src="./github/img3.jpeg" width="40%" height="auto">
+    <img alt="Interface da aplicação" src="./github/img4.jpeg" width="40%" height="auto">
+     <img alt="Interface da aplicação" src="./github/img5.jpeg" width="40%" height="auto">
 </p>
 
 <h2>🛠 Tecnologias Utilizadas</h2>
