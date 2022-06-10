@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 import { theme } from "../../global/styles/theme";
 
-const { gray } = theme.colors;
+const { grey } = theme.colors;
 
 export const styles = StyleSheet.create({
     container: {
@@ -39,7 +39,7 @@ export const styles = StyleSheet.create({
     },
     label: {
         textAlign: 'center',
-        color: gray
+        color: grey
     },
     list: {
         width: '100%',

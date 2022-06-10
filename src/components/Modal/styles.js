@@ -1,5 +1,9 @@
 import { StyleSheet } from 'react-native';
 
+import { theme } from "../../global/styles/theme";
+
+const { grey } = theme.colors;
+
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -37,8 +41,13 @@ export const styles = StyleSheet.create({
         padding: 14,
         borderRadius: 10,
     },
+    descrition:{
+        color: grey,
+        fontSize: 14
+    },
     text:{
-        color: "#fff"
+        color: "#ffff",
+        fontSize: 14
     }
 
 })

@@ -22,6 +22,7 @@ export const styles = StyleSheet.create({
   },
   sessionInput: {
     width: 180,
+    height: 40,
     borderWidth: 0.3,
     borderRadius: 7,
     marginVertical: 30,

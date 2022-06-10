@@ -55,7 +55,7 @@ export function Cart({ route }) {
       {cart.items.length < 1 &&
         <View style={styles.sessionImg}>
           <Image style={styles.image} source={CART_IMG} resizeMode="contain" />
-          <Text style={styles.title}>Nenhum item inserido no até o momento.</Text>
+          <Text style={styles.title}>Nenhum item inserido até o momento.</Text>
         </View>
       }
       <FlatList

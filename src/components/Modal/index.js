@@ -14,14 +14,14 @@ export function WrapperModal({ visible, data, handleModal }) {
             <Modal isVisible={visible}>
                 <View style={styles.modalView}>
                     <View style={styles.header}>
-                        <Text>{data?.name || ""}</Text>
+                        <Text style={styles.descrition}>{data?.name || ""}</Text>
                         <TouchableOpacity onPress={() => handleModal(false)}>
                             <Icon name="close" color="#000" size={25} />
                         </TouchableOpacity>
                     </View>
                     <View style={styles.sessionItem}>
                         <Image style={styles.Image} source={{ uri: data?.image || "" }} />
-                        <Text>{numberToReal(data?.price || 0)}</Text>
+                        <Text style={styles.descrition}>{numberToReal(data?.price || 0)}</Text>
                     </View>
                     <View style={styles.sessionButtons}>
                         <TouchableOpacity

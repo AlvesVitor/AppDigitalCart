@@ -25,7 +25,7 @@ export function CardProduct({ data }) {
           <TouchableOpacity onPress={() => removeItemCart(ean, false)}>
             <Icon
               name="minus"
-              size={20}
+              size={22}
               color="red"
             />
           </TouchableOpacity>
@@ -33,7 +33,7 @@ export function CardProduct({ data }) {
           <TouchableOpacity onPress={() => addItemCart(ean)}>
             <Icon
               name="plus"
-              size={20}
+              size={22}
               color="green"
             />
           </TouchableOpacity>
@@ -44,7 +44,7 @@ export function CardProduct({ data }) {
         <TouchableOpacity onPress={() => removeItemCart(ean, true)}>
           <Icon
             name="delete-outline"
-            size={20}
+            size={22}
             color="red"
           />
         </TouchableOpacity>

@@ -11,16 +11,16 @@ import { styles } from "./styles";
 
 const ONE_SECOND = 1000;
 
-const audio = new Sound(
-    MP3,
-    error => {
-        if (error) {
-            console.log('failed sound', error);
-            return;
-        }
-    },
-);
 export function Scanner() {
+    const audio = new Sound(
+        MP3,
+        error => {
+            if (error) {
+                console.log('failed sound', error);
+                return;
+            }
+        },
+    );
     const [scanner, setScanner] = useState(true);
     const [product, setProdut] = useState(null);
     const [modalVisible, setModalVisible] = useState();

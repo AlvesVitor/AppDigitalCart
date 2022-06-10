@@ -13,7 +13,10 @@ export function Initial() {
 
   function handleOnPress() {
     if (cep.length < 8) {
-      return Alert.alert("Atenção", "Insira um CEP valido!");
+      Alert.alert(
+        "Atenção!",
+        "Insira um CEP válido")
+      return;
     }
     navigation.navigate("Company", { cep: cep });
   }
