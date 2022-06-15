@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
   sessionImg: {
     width: 200,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   logo: {
     width: 80,
@@ -26,8 +26,8 @@ export const styles = StyleSheet.create({
     borderWidth: 0.3,
     borderRadius: 7,
     marginVertical: 30,
-    alignItems: 'center',
-    borderColor: grey
+    alignItems: "center",
+    borderColor: grey,
   },
   input: {
     width: "100%",
@@ -35,7 +35,7 @@ export const styles = StyleSheet.create({
     color: grey,
     alignItems: "center",
     justifyContent: "center",
-    textAlign: "center"
+    textAlign: "center",
   },
   title: {
     fontSize: 16,
@@ -49,9 +49,8 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  buttonText:{
+  buttonText: {
     color: "#fff",
-    fontSize: 12
-  }
-
+    fontSize: 12,
+  },
 });

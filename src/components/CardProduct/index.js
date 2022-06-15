@@ -11,10 +11,13 @@ export function CardProduct({ data }) {
   const { addItemCart, removeItemCart } = useContext(Context);
 
   return (
-    <View style={styles.container} >
-
+    <View style={styles.container}>
       <View style={styles.sessionImg}>
-        <Image style={styles.logo} source={{ uri: image }} resizeMode="contain" />
+        <Image
+          style={styles.logo}
+          source={{ uri: image }}
+          resizeMode="contain"
+        />
         <Text style={styles.title}>{numberToReal(price)}</Text>
       </View>
 
@@ -23,34 +26,21 @@ export function CardProduct({ data }) {
 
         <View style={styles.sessionAmount}>
           <TouchableOpacity onPress={() => removeItemCart(ean, false)}>
-            <Icon
-              name="minus"
-              size={22}
-              color="red"
-            />
+            <Icon name="minus" size={22} color="red" />
           </TouchableOpacity>
           <Text style={styles.amountText}>{amount}</Text>
           <TouchableOpacity onPress={() => addItemCart(ean)}>
-            <Icon
-              name="plus"
-              size={22}
-              color="green"
-            />
+            <Icon name="plus" size={22} color="green" />
           </TouchableOpacity>
         </View>
       </View>
 
       <View style={styles.sessionTotal}>
         <TouchableOpacity onPress={() => removeItemCart(ean, true)}>
-          <Icon
-            name="delete-outline"
-            size={22}
-            color="red"
-          />
+          <Icon name="delete-outline" size={22} color="red" />
         </TouchableOpacity>
         <Text style={styles.totalText}>{numberToReal(price * amount)}</Text>
       </View>
-
-    </View >
+    </View>
   );
 }

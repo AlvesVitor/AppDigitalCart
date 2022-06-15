@@ -20,9 +20,9 @@ export function Company({ route }) {
         .then((data) => {
           let list = [];
           data.map((item) => {
-            list.push(...item.sellers)
-          })
-          setCompanies(list)
+            list.push(...item.sellers);
+          });
+          setCompanies(list);
         })
         .catch((e) => alert(e));
     }
@@ -36,7 +36,9 @@ export function Company({ route }) {
         showsVerticalSrollIndicator={false}
         data={companies}
         keyExtractor={(item) => item.id}
-        renderItem={({ item, index }) => <CardCompany data={item} color={index % 2}/>}
+        renderItem={({ item, index }) => (
+          <CardCompany data={item} color={index % 2} />
+        )}
       />
     </View>
   );

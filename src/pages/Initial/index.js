@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { View, Text, TextInput, Image, Alert, TouchableWithoutFeedback, Keyboard, TouchableOpacity, } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Image,
+  Alert,
+  TouchableWithoutFeedback,
+  Keyboard,
+  TouchableOpacity,
+} from "react-native";
 
 import LOGO from "../../assets/img/logo.png";
 
@@ -10,12 +19,9 @@ export function Initial() {
   const [cep, setCep] = useState("");
   const navigation = useNavigation();
 
-
   function handleOnPress() {
     if (cep.length < 8) {
-      Alert.alert(
-        "Atenção!",
-        "Insira um CEP válido")
+      Alert.alert("Atenção!", "Insira um CEP válido");
       return;
     }
     navigation.navigate("Company", { cep: cep });
@@ -33,7 +39,7 @@ export function Initial() {
           <TextInput
             style={styles.input}
             keyboardType="numeric"
-            value={cep.replace(/[^0-9]/g, '')}
+            value={cep.replace(/[^0-9]/g, "")}
             onChangeText={(e) => setCep(e)}
             maxLength={8}
           />

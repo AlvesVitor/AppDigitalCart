@@ -11,7 +11,6 @@ import { Context } from "../../context";
 import service from "../../service";
 import { styles } from "./styles";
 
-
 export function Cart({ route }) {
   const { id } = route.params;
   const { setProducts, cart, products } = useContext(Context);
@@ -39,7 +38,7 @@ export function Cart({ route }) {
                 name: itemB.name,
                 image: itemB.images[0].imageUrl || "",
                 price: itemB.sellers[0].commertialOffer.Price,
-                amount: 1
+                amount: 1,
               };
               list.push(product);
             });
@@ -52,12 +51,12 @@ export function Cart({ route }) {
 
   return (
     <View style={styles.container}>
-      {cart.items.length < 1 &&
+      {cart.items.length < 1 && (
         <View style={styles.sessionImg}>
           <Image style={styles.image} source={CART_IMG} resizeMode="contain" />
           <Text style={styles.title}>Nenhum item inserido até o momento.</Text>
         </View>
-      }
+      )}
       <FlatList
         style={{ width: "100%" }}
         showsVerticalSrollIndicator={false}

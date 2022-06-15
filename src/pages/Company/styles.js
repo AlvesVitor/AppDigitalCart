@@ -9,9 +9,9 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    padding: 10
+    padding: 10,
   },
   title: {
-    color: grey
-  }
+    color: grey,
+  },
 });

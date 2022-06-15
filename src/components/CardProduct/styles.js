@@ -10,15 +10,15 @@ export const styles = StyleSheet.create({
     height: 100,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: 'center',
+    justifyContent: "center",
     borderBottomWidth: 5,
-    borderBottomColor: '#f5f5f5',
+    borderBottomColor: "#f5f5f5",
     paddingHorizontal: 10,
     marginVertical: 7,
   },
   sessionImg: {
     flexDirection: "column",
-    alignItems: 'center',
+    alignItems: "center",
     justifyContent: "center",
   },
   logo: {
@@ -33,25 +33,25 @@ export const styles = StyleSheet.create({
   },
   title: {
     fontSize: 12,
-    color: grey
+    color: grey,
   },
   amountText: {
     fontSize: 12,
     paddingHorizontal: 10,
-    color: grey
+    color: grey,
   },
   totalText: {
     fontSize: 12,
     paddingVertical: 7,
-    color: grey
+    color: grey,
   },
   sessionAmount: {
     paddingVertical: 7,
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   sessionTotal: {
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });
