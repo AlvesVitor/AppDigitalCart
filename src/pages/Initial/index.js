@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
+
+import LOGO from "../../assets/img/logo.png";
+import { styles } from "./styles";
 import {
   View,
   Text,
@@ -10,10 +13,6 @@ import {
   Keyboard,
   TouchableOpacity,
 } from "react-native";
-
-import LOGO from "../../assets/img/logo.png";
-
-import { styles } from "./styles";
 
 export function Initial() {
   const [cep, setCep] = useState("");
@@ -44,6 +43,7 @@ export function Initial() {
             maxLength={8}
           />
         </View>
+
         <TouchableOpacity style={styles.button} onPress={handleOnPress}>
           <Text style={styles.buttonText}>Avançar</Text>
         </TouchableOpacity>

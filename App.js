@@ -1,6 +1,6 @@
 import React from "react";
-import { AppRoutes } from "./src/routes/app.routes";
 
+import { AppRoutes } from "./src/routes/app.routes";
 import ContextProvider from "./src/context";
 
 export default function App() {

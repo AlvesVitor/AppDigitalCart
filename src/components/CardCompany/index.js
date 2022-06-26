@@ -1,11 +1,11 @@
 import React from "react";
+import { Text, Image, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { Text, Image, TouchableOpacity, View } from "react-native";
 import LOGO from "../../assets/img/logo.png";
 
 import { styles } from "./styles";
 
-export function CardCompany({ data, color }) {
+export function CardCompany({ data }) {
   const { id, name } = data;
   const navigation = useNavigation();
 

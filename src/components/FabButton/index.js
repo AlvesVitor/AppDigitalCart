@@ -1,4 +1,5 @@
 import React from "react";
+
 import { View, TouchableOpacity } from "react-native";
 import { IconComponent as Icon } from "../Icon";
 import { styles } from "./styles";

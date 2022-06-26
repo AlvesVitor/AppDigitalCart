@@ -1,10 +1,10 @@
 import React, { useEffect, useContext } from "react";
 import { View, Text, FlatList, Image } from "react-native";
 
+import { IconComponent as Icon } from "../../components/Icon";
 import { CardProduct } from "../../components/CardProduct";
 import { useNavigation } from "@react-navigation/native";
 import { FabButton } from "../../components/FabButton";
-import { IconComponent as Icon } from "../../components/Icon";
 import CART_IMG from "../../assets/img/cart.png";
 import { numberToReal } from "../../utils";
 import { Context } from "../../context";
@@ -13,7 +13,7 @@ import { styles } from "./styles";
 
 export function Cart({ route }) {
   const { id } = route.params;
-  const { setProducts, cart, products } = useContext(Context);
+  const { setProducts, cart } = useContext(Context);
 
   const navigation = useNavigation();
 
@@ -31,13 +31,15 @@ export function Cart({ route }) {
         )
         .then((data) => {
           let list = [];
-          data.map((itemA) => {
-            itemA.items.map((itemB) => {
+          data.map((item) => {
+            let fullDescription = item.description;
+            item.items.map((prod) => {
               let product = {
-                ean: itemB.ean,
-                name: itemB.name,
-                image: itemB.images[0].imageUrl || "",
-                price: itemB.sellers[0].commertialOffer.Price,
+                ean: prod.ean,
+                name: prod.name,
+                description: fullDescription,
+                image: prod.images[0].imageUrl || "",
+                price: prod.sellers[0].commertialOffer.Price,
                 amount: 1,
               };
               list.push(product);

@@ -1,10 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
-import { View, Text } from "react-native";
+import { View, Text, Alert } from "react-native";
 
+import { IconComponent as Icon } from "../../components/Icon";
 import QRCodeScanner from "react-native-qrcode-scanner";
 import { WrapperModal } from "../../components/Modal";
 import MP3 from "../../assets/midia/audio.mp3";
-import { IconComponent as Icon } from "../../components/Icon";
 import { Context } from "../../context";
 import Sound from "react-native-sound";
 import { styles } from "./styles";
@@ -21,18 +21,34 @@ export function Scanner() {
   const [scanner, setScanner] = useState(true);
   const [product, setProdut] = useState(null);
   const [modalVisible, setModalVisible] = useState();
-  const { addItemCart, products } = useContext(Context);
+  const { addItemCart, products, sound } = useContext(Context);
 
   useEffect(() => {
     audio.setVolume(1);
     audio.release();
   }, []);
 
+  /**
+   * Valida código de barras escaneado
+   * @param data
+   */
   function handleBarCodeScanned({ data }) {
-    setProdut(products.find((e) => e.ean === data) || null);
-    audio.play();
+    let item = products.find((e) => e.ean === data) || null;
+    if (sound) {
+      audio.play();
+    }
     setScanner(false);
-    setModalVisible(true);
+    if (item) {
+      setProdut(item);
+      setModalVisible(true);
+    } else {
+      Alert.alert("Atenção!", "Produto não encontrado.", [
+        {
+          text: "ok",
+          onPress: () => setScanner(true),
+        },
+      ]);
+    }
   }
 
   function handleModal(add) {

@@ -1,3 +1,9 @@
+/**
+ * Requisição para api
+ * @param type - verbo HTTP
+ * @param url - web service
+ * @param value - valor contido do body
+ */
 function request(type, url, value) {
   return new Promise((resolver, reject) => {
     fetch(`${url}`, {

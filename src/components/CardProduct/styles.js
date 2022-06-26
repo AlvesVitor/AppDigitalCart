@@ -35,23 +35,36 @@ export const styles = StyleSheet.create({
     fontSize: 12,
     color: grey,
   },
-  amountText: {
-    fontSize: 12,
-    paddingHorizontal: 10,
-    color: grey,
-  },
   totalText: {
     fontSize: 12,
     paddingVertical: 7,
     color: grey,
   },
   sessionAmount: {
-    paddingVertical: 7,
+    flex: 1,
     flexDirection: "row",
+    alignItems: "flex-start",
+    justifyContent: "flex-start",
   },
   sessionTotal: {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
+  },
+  areaInput: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    borderWidth: 0.2,
+    borderColor: grey,
+    borderRadius: 4,
+    height: 40,
+    paddingHorizontal: 2,
+    marginTop: 7,
+    backgroundColor: "#f5f5f5",
+  },
+  input: {
+    fontSize: 14,
+    marginLeft: 10,
   },
 });

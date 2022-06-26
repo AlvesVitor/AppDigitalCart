@@ -9,7 +9,45 @@ export default function ContextProvider({ children }) {
     items: [],
     total: 0,
   });
+  const [sound, setSound] = useState(true);
 
+  /**
+   * Atualiza diretamente a quantidade do item inserido no carrinho
+   * @param data - ean do produto
+   * @param amount - quantidade do produto
+   */
+  function updateAmountCart(data, amount) {
+    let exists = cart.items.find((e) => e.ean === data);
+    if (exists) {
+      let newItems = cart.items.map((item) =>
+        item.ean === data
+          ? {
+              ...item,
+              amount: amount,
+            }
+          : item
+      );
+
+      let reductionValueAmount =
+        parseFloat(cart.total) -
+        parseInt(exists.amount) * parseFloat(exists.price);
+      let newTotal =
+        parseFloat(reductionValueAmount) + parseFloat(exists.price) * amount;
+
+      setCart((prevState) => ({
+        ...prevState,
+        total: newTotal,
+        items: newItems,
+      }));
+    } else {
+      Alert.alert("Atenção!", "Produto não encontrado.");
+    }
+  }
+
+  /**
+   * Adiciona um item no carrinho
+   * @param data - ean do produto
+   */
   function addItemCart(data) {
     let exists = cart.items.find((e) => e.ean === data);
     if (exists) {
@@ -17,13 +55,13 @@ export default function ContextProvider({ children }) {
         item.ean === data
           ? {
               ...item,
-              amount: item.amount + 1,
+              amount: parseInt(item.amount) + 1,
             }
           : item
       );
       setCart((prevState) => ({
         ...prevState,
-        total: prevState.total + exists.price,
+        total: parseFloat(prevState.total) + parseFloat(exists.price),
         items: newItems,
       }));
     } else {
@@ -40,28 +78,35 @@ export default function ContextProvider({ children }) {
     }
   }
 
+  /**
+   * Remove um item no carrinho
+   * @param data - ean do produto
+   * @param all - boolean verificado para exclusão do item por completo do carrinho
+   */
   function removeItemCart(data, all) {
-    let exists = cart.items.filter((e) => e.ean === data);
+    let exists = cart.items.find((e) => e.ean === data);
 
-    if (exists[0].amount > 1 && !all) {
+    if (exists.amount > 1 && !all) {
       let newItems = cart.items.map((item) =>
         item.ean === data
           ? {
               ...item,
-              amount: item.amount - 1,
+              amount: parseInt(item.amount) - 1,
             }
           : item
       );
       setCart((prevState) => ({
         ...prevState,
         items: newItems,
-        total: prevState.total - exists[0].price,
+        total: parseFloat(prevState.total) - parseFloat(exists.price),
       }));
     } else {
       setCart((prevState) => ({
         ...prevState,
         items: cart.items.filter((e) => e.ean !== data),
-        total: prevState.total - exists[0].amount * exists[0].price,
+        total:
+          parseFloat(prevState.total) -
+          parseInt(exists.amount) * parseFloat(exists.price),
       }));
     }
   }
@@ -74,6 +119,9 @@ export default function ContextProvider({ children }) {
         cart,
         addItemCart,
         removeItemCart,
+        updateAmountCart,
+        sound,
+        setSound,
       }}
     >
       {children}

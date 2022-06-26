@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { NavigationContainer } from "@react-navigation/native";
+import { IconComponent as Icon } from "../components/Icon";
+import { TouchableOpacity } from "react-native";
+import { Scanner } from "../pages/Scanner";
 import { Initial } from "../pages/Initial";
 import { Company } from "../pages/Company";
+import { Context } from "../context";
 import { Cart } from "../pages/Cart";
-import { Scanner } from "../pages/Scanner";
-
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const Stack = createNativeStackNavigator();
 
 export function AppRoutes() {
+  const { sound, setSound } = useContext(Context);
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -40,6 +44,15 @@ export function AppRoutes() {
           options={{
             headerShown: true,
             headerTitle: "Leitor",
+            headerRight: () => (
+              <TouchableOpacity onPress={() => setSound(!sound)}>
+                <Icon
+                  name={sound ? "volume-high" : "volume-off"}
+                  color="#000"
+                  size={22}
+                />
+              </TouchableOpacity>
+            ),
           }}
         />
       </Stack.Navigator>

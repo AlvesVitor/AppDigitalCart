@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
+
 import { theme } from "../../global/styles/theme";
 import { IconComponent as Icon } from "../Icon";
 import { numberToReal } from "../../utils";
@@ -9,19 +10,20 @@ import { styles } from "./styles";
 
 export function WrapperModal({ visible, data, handleModal }) {
   const { red, blue } = theme.colors;
+
   return (
     <View styles={styles.container}>
       <Modal isVisible={visible}>
         <View style={styles.modalView}>
           <View style={styles.header}>
-            <Text style={styles.descrition}>{data?.name || ""}</Text>
+            <Text style={styles.description}>{data?.name || ""}</Text>
             <TouchableOpacity onPress={() => handleModal(false)}>
               <Icon name="close" color="#000" size={25} />
             </TouchableOpacity>
           </View>
           <View style={styles.sessionItem}>
             <Image style={styles.Image} source={{ uri: data?.image || "" }} />
-            <Text style={styles.descrition}>
+            <Text style={styles.description}>
               {numberToReal(data?.price || 0)}
             </Text>
           </View>

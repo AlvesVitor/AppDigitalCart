@@ -41,7 +41,7 @@ export const styles = StyleSheet.create({
     padding: 14,
     borderRadius: 10,
   },
-  descrition: {
+  description: {
     color: grey,
     fontSize: 14,
   },

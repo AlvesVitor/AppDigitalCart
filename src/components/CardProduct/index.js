@@ -1,23 +1,49 @@
-import React, { useContext } from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import React, { useContext, useState, useEffect } from "react";
+
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  TextInput,
+  Alert,
+} from "react-native";
+import { IconComponent as Icon } from "../../components/Icon";
 import { numberToReal } from "../../utils";
 import { Context } from "../../context";
-import { IconComponent as Icon } from "../../components/Icon";
-
 import { styles } from "./styles";
 
 export function CardProduct({ data }) {
-  const { ean, image, name, price, amount } = data;
-  const { addItemCart, removeItemCart } = useContext(Context);
+  const { ean, image, name, description, price, amount } = data;
+  const [inputAmount, setInputAmount] = useState(amount.toString());
+  const { addItemCart, removeItemCart, updateAmountCart } = useContext(Context);
+
+  useEffect(() => {
+    setInputAmount(amount.toString());
+  }, [amount]);
+
+  /**
+   * Chama a função de atualizar quantidade do item no carrinho caso o
+   * valor inserido seja maior que 0 e diferente do estado anterior
+   */
+  function handleUpdateAmount() {
+    if (inputAmount > 0 && inputAmount !== amount) {
+      updateAmountCart(ean, inputAmount);
+    } else {
+      setInputAmount(amount.toString());
+    }
+  }
 
   return (
     <View style={styles.container}>
       <View style={styles.sessionImg}>
-        <Image
-          style={styles.logo}
-          source={{ uri: image }}
-          resizeMode="contain"
-        />
+        <TouchableOpacity onPress={() => Alert.alert(name, description)}>
+          <Image
+            style={styles.logo}
+            source={{ uri: image }}
+            resizeMode="contain"
+          />
+        </TouchableOpacity>
         <Text style={styles.title}>{numberToReal(price)}</Text>
       </View>
 
@@ -25,13 +51,21 @@ export function CardProduct({ data }) {
         <Text style={styles.title}>{name}</Text>
 
         <View style={styles.sessionAmount}>
-          <TouchableOpacity onPress={() => removeItemCart(ean, false)}>
-            <Icon name="minus" size={22} color="red" />
-          </TouchableOpacity>
-          <Text style={styles.amountText}>{amount}</Text>
-          <TouchableOpacity onPress={() => addItemCart(ean)}>
-            <Icon name="plus" size={22} color="green" />
-          </TouchableOpacity>
+          <View style={styles.areaInput}>
+            <TouchableOpacity onPress={() => removeItemCart(ean, false)}>
+              <Icon name="minus" size={22} color="red" />
+            </TouchableOpacity>
+            <TextInput
+              keyboardType="numeric"
+              style={styles.input}
+              value={inputAmount}
+              onChangeText={(e) => setInputAmount(e)}
+              onBlur={handleUpdateAmount}
+            />
+            <TouchableOpacity onPress={() => addItemCart(ean)}>
+              <Icon name="plus" size={22} color="green" />
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
 
